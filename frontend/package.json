@@ -7,7 +7,7 @@
     "preview": "vite preview --port 3010"
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.4",
     "element-plus": "^2.1.4",
     "vue": "^3.0.6",
     "vue-router": "^4.0.14",

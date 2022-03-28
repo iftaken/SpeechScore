@@ -9,8 +9,6 @@
   "dependencies": {
     "axios": "^0.21.0",
     "element-plus": "^2.1.4",
-    "surge": "^0.23.1",
-    "v3layer": "^1.0.0",
     "vue": "^3.0.6",
     "vue-router": "^4.0.14",
     "vuex": "^4.0.2"

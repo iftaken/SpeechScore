@@ -1,0 +1,4 @@
+*.wav
+files/*
+*.sqlite
+*.pyc

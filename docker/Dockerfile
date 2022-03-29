@@ -5,6 +5,7 @@ RUN apt-get update \
     && pip install --upgrade pip \
     && cd /root \
     # && git clone https://github.com/iftaken/SpeechScore.git \
+    # 国内可用下面仓库
     && git clone https://gitee.com/huangyunting/SpeechScore.git \
     && cd SpeechScore/frontend \
     && npm install \
@@ -13,4 +14,5 @@ RUN apt-get update \
 
 EXPOSE 3010 8002
 
-ENTRYPOINT ["/root/SpeechScore/start_server.sh"]
+# 有bug, 可进入docker 手动打开
+# ENTRYPOINT ["bash /root/SpeechScore/start_server.sh"]

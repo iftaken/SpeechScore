@@ -9,7 +9,7 @@ RUN apt-get update \
     && git clone https://gitee.com/huangyunting/SpeechScore.git \
     && cd SpeechScore/frontend \
     && npm install \
-    && npm build \
+    && npm run build \
     && cd ../server \
     && pip3 install -r requirements.txt
 

@@ -51,4 +51,26 @@ npm run preview
 4. 返回`任务列表`中，开始评测打分
 5. 非 `admin`用户只能删除自己创建的任务
 
+## 构建docker开启
+
+```shell
+cd docker
+bash build.sh
+# 构建完成后
+
+# 启动容器，进入终端
+docker run -i -t \
+  -p 3010:3010 \
+  -p 8002:8002 \
+  -v db:/root/SpeechScore/db \
+  -v files:/root/SpeechScore/files \
+  speech-score:v0 /bin/bash
+
+# 进入终端后
+bash /root/SpeechScore/start_server.sh
+
+# 打开游览器 http://localhost:3010/
+```
+
+
 

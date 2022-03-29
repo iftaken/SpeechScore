@@ -6,6 +6,4 @@ nohup python3 main.py >> ../files/server.out &
 
 cd ../frontend
 
-npm run build
-
-nohup npm run dev >> ../files/frontend.out &
+nohup npm run preview >> ../files/frontend.out &

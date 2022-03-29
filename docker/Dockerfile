@@ -13,4 +13,4 @@ RUN apt-get update \
 
 EXPOSE 3010 8002
 
-# ENTRYPOINT ["bash", "/root/SpeechScore/start_server.sh"]
+ENTRYPOINT ["/root/SpeechScore/start_server.sh"]

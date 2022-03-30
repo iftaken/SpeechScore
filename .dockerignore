@@ -1,0 +1,6 @@
+*.sqlite
+*.wav
+*/files/*
+*.md
+*/node_modules/*
+*/dist*

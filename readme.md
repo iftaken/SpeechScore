@@ -54,16 +54,14 @@ npm run preview
 ## 构建docker开启
 
 ```shell
-cd docker
 bash build.sh
 # 构建完成后
-
 # 启动容器，进入终端
 docker run -i -t \
   -p 3010:3010 \
   -p 8002:8002 \
-  -v db:/root/SpeechScore/db \
-  -v files:/root/SpeechScore/files \
+  -v $PWD/db:/root/SpeechScore/db \
+  -v $PWD/files:/root/SpeechScore/files \
   speech-score:v0 /bin/bash
 
 # 进入终端后

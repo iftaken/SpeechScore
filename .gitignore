@@ -2,3 +2,4 @@
 files/*
 *.sqlite
 *.pyc
+.DS_*

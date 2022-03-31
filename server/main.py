@@ -1,4 +1,3 @@
-from unittest import result
 from fastapi import FastAPI, Header, File, UploadFile, Form
 from pydantic import BaseModel
 from typing import Optional, List 
@@ -286,7 +285,8 @@ async def downloadFile(fileId:int):
         return None
     else:
         # 把文件传回去
-        return FileResponse(file['file_path'], filename=file['file_name'])
+        # return FileResponse(file['file_path'], filename=file['file_name'])
+        return {"file_path": file['file_path']}
              
 # 上传打分
 @app.post("/scores/postScoreList")

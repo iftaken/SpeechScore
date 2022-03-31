@@ -3,7 +3,8 @@ FROM node:latest
 RUN apt-get update \
     && apt-get install -y python3-pip \
     && pip install --upgrade pip \
-    && apt-get install -y nginx
+    && apt-get install -y nginx \
+    && apt-get install -y vim
 
 ADD db /root/SpeechScore/db
 ADD server /root/SpeechScore/server

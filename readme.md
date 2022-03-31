@@ -74,8 +74,10 @@ docker run -i -t --rm \
   speech-score:v0 /bin/bash
 
 # 查看容器运行状态
-docker ps
+bash /root/SpeechScore/start_server.sh
 
+# 镜像导出
+docker save -o SpeechScore.tar speech-score:v0
 
 # 打开游览器 http://localhost:3010/
 ```

@@ -56,16 +56,17 @@ npm run preview
 ```shell
 bash build.sh
 # 构建完成后
-# 启动容器，进入终端
-docker run -i -t \
+# 启动容器，后台运行
+docker run -d \
   -p 3010:3010 \
   -p 8002:8002 \
   -v $PWD/db:/root/SpeechScore/db \
   -v $PWD/files:/root/SpeechScore/files \
-  speech-score:v0 /bin/bash
+  speech-score:v0
 
-# 进入终端后
-bash /root/SpeechScore/start_server.sh
+# 查看容器运行状态
+docker ps
+
 
 # 打开游览器 http://localhost:3010/
 ```

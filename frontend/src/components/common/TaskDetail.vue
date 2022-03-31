@@ -63,7 +63,8 @@ import UploadFile from './UploadFile.vue'
                         mos: fileList[i]["mos"],
                         cnt: fileList[i]["cnt"],
                         file_name: fileList[i]["file_name"],
-                        id: fileList[i]["file_id"]
+                        id: fileList[i]["file_id"],
+                        file_path: fileList[i]['file_path']
                     });
                 }
             }
@@ -99,8 +100,15 @@ import UploadFile from './UploadFile.vue'
             return true
         } else {
             return false
-        }
+            }
         },
+        getFilePathURL(filePath) {
+            let binaryData = [];
+            binaryData.push(blob);
+            link.href = window.URL.createObjectURL(new Blob(binaryData));
+
+            return filePath;
+        }
     },
     created() {
         this.taskName = this.$router.currentRoute.value.query.taskName;

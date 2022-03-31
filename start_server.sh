@@ -7,7 +7,7 @@ if [ ! -d "$build_dir" ]; then
         mkdir $build_dir
 fi
 
-nginx -c /root/SpeechScore/nginx.conf
+nginx -c /SpeechScore/nginx.conf
 
 nginx -s reload
 

@@ -9,6 +9,8 @@ import datetime
 from tokens import TokenCotrol
 from starlette.responses import FileResponse
 import uvicorn
+import os
+import stat
 
 
 tokenCon = TokenCotrol()
@@ -153,6 +155,9 @@ async def upload_task_files(files: List[UploadFile], task_id: int = Form(...)):
                 async with aiofiles.open(out_file_path, 'wb') as out_file:
                     content = await file.read()  # async read
                     await out_file.write(content)  # async write
+                # 修改文件权限
+                os.chmod(out_file_path, stat.S_IRWXU+stat.S_IRGRP+stat.S_IXGRP+stat.S_IROTH+stat.S_IWOTH)
+                
             # 信息存入数据库
             res = db.insert_files(task_id, file_path=out_file_path, file_name=file.filename)
             if not res:
@@ -187,6 +192,7 @@ async def getScoreList(taskId:TaskId):
             cnt_res = {}
             cnt_res['mos'] = 0
             cnt_res['file_name'] = file['file_name']
+            cnt_res['file_path'] = file['file_path']
             cnt_res['cnt'] = 0
             cnt_res['file_id'] = file['id']
 
@@ -285,8 +291,8 @@ async def downloadFile(fileId:int):
         return None
     else:
         # 把文件传回去
-        # return FileResponse(file['file_path'], filename=file['file_name'])
-        return {"file_path": file['file_path']}
+        return FileResponse(file['file_path'], filename=file['file_name'])
+        # return {"file_path": file['file_path']}
              
 # 上传打分
 @app.post("/scores/postScoreList")

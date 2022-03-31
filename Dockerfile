@@ -6,19 +6,18 @@ RUN apt-get update \
     && apt-get install -y nginx \
     && apt-get install -y vim
 
-ADD db /root/SpeechScore/db
-ADD server /root/SpeechScore/server
-ADD frontend /root/SpeechScore/frontend
+ADD db /SpeechScore/db
+ADD server /SpeechScore/server
+ADD frontend /SpeechScore/frontend
 
-RUN cd /root \
-    && cd SpeechScore/frontend \
+RUN cd /SpeechScore/frontend \
     && npm install \
     && npm run build \
     && cd ../server \
     && pip3 install -r requirements.txt
 
-ADD start_server.sh /root/SpeechScore/
-ADD nginx.conf /root/SpeechScore/
+ADD start_server.sh /SpeechScore/
+ADD nginx.conf /SpeechScore/
 
 EXPOSE 3010 8002
 

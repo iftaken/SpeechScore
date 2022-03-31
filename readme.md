@@ -59,18 +59,19 @@ bash build.sh
 # 方式1： 后台运行
 # 启动容器，后台运行
 docker run -d \
-  -p 3010:3010 \
+  -p 8001:8001 \
   -p 8002:8002 \
-  -v $PWD/db:/root/SpeechScore/db \
-  -v $PWD/files:/root/SpeechScore/files \
+  -v $PWD/db:/SpeechScore/db \
+  -v $PWD/files:/SpeechScore/files \
   speech-score:v0
 
 # 方式2：进入终端调试
-docker run -i -t --rm \
-  -p 3010:3010 \
+docker run -i -t \
+  --rm \
+  -p 8001:8001 \
   -p 8002:8002 \
-  -v $PWD/db:/root/SpeechScore/db \
-  -v $PWD/files:/root/SpeechScore/files \
+  -v $PWD/db:/SpeechScore/db \
+  -v $PWD/files:/SpeechScore/files \
   speech-score:v0 /bin/bash
 
 # 查看容器运行状态
@@ -79,8 +80,15 @@ bash /root/SpeechScore/start_server.sh
 # 镜像导出
 docker save -o SpeechScore.tar speech-score:v0
 
+# 指定uid启动
+docker run --user $(id -u) speech-score:v0
+
 # 打开游览器 http://localhost:3010/
 ```
+
+## 注意
+
+Ubuntu中使用docker会以root的身份读写文件
 
 
 

@@ -56,6 +56,7 @@ npm run preview
 ```shell
 bash build.sh
 # 构建完成后
+# 方式1： 后台运行
 # 启动容器，后台运行
 docker run -d \
   -p 3010:3010 \
@@ -63,6 +64,14 @@ docker run -d \
   -v $PWD/db:/root/SpeechScore/db \
   -v $PWD/files:/root/SpeechScore/files \
   speech-score:v0
+
+# 方式2：进入终端调试
+docker run -i -t --rm \
+  -p 3010:3010 \
+  -p 8002:8002 \
+  -v $PWD/db:/root/SpeechScore/db \
+  -v $PWD/files:/root/SpeechScore/files \
+  speech-score:v0 /bin/bash
 
 # 查看容器运行状态
 docker ps

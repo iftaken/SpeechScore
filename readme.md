@@ -70,6 +70,7 @@ docker run -d \
   -p 8002:8002 \
   -v $PWD/db:/SpeechScore/db \
   -v $PWD/files:/SpeechScore/files \
+  -v $PWD/nginx.conf:/SpeechScore/nginx.conf \
   speech-score:v0
 
 # 方式2：进入终端调试
@@ -79,6 +80,7 @@ docker run -i -t \
   -p 8002:8002 \
   -v $PWD/db:/SpeechScore/db \
   -v $PWD/files:/SpeechScore/files \
+  -v $PWD/nginx.conf:/SpeechScore/nginx.conf \
   speech-score:v0 /bin/bash
 
 # 查看容器运行状态

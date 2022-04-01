@@ -51,6 +51,13 @@ npm run preview
 4. 返回`任务列表`中，开始评测打分
 5. 非 `admin`用户只能删除自己创建的任务
 
+## 注意
+
+如果运行的服务器和游览器客户端不在一台机器上，需要修改代理地址
+
+1. 如果前端用vite进行dev开发，需要修改 `frontend/vite.config.js` 中 `target` 的值, 将其修改为服务器地址，不然会访问本地的localhost，找不到相关资源
+2. 在docker中使用时，挂载了 nginx 代理，因此需要修改 `nginx.conf` 中的 `proxy_pass`, 将 `/api` 中 `proxy_pass http://0.0.0.0:8002/api` 改为 `proxy_pass http://serverIP:8002/api`, 修改完毕后再构建 docker 镜像
+
 ## 构建docker开启
 
 ```shell
@@ -75,7 +82,7 @@ docker run -i -t \
   speech-score:v0 /bin/bash
 
 # 查看容器运行状态
-bash /root/SpeechScore/start_server.sh
+bash /SpeechScore/start_server.sh
 
 # 镜像导出
 docker save -o SpeechScore.tar speech-score:v0

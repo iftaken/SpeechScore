@@ -28,7 +28,7 @@
           <!-- 展示评测详细情况 -->
           <el-button size="large" type="primary" v-on:click="ToScore(item.id, item.name, item.leader_id)"> 评测 </el-button>
           &nbsp;
-          <el-button size="large" type="success" v-on:click="ToDeatil(item.id, item.name, )"> 详细 </el-button>
+          <el-button size="large" type="success" v-on:click="ToDeatil(item.id, item.name, item.leader_id)"> 详细 </el-button>
           &nbsp;
           <el-button v-if="isAdmin(item.leader_id)"
             size="large" type="danger" 
@@ -109,8 +109,11 @@ export default {
         leaderId: Number(leader_id)}})
     },
 
-    ToScore(task_id, task_name) {
-      this.$router.push({path:'/home/scoreTask', query:{taskId: Number(task_id), taskName: task_name}})
+    ToScore(task_id, task_name, leader_id) {
+      this.$router.push({path:'/home/scoreTask', query:{
+        taskId: Number(task_id),
+        taskName: task_name,
+        leaderId: Number(leader_id)}})
     },
 
     CreateTasks(){

@@ -3,3 +3,4 @@ files/*
 *.sqlite
 *.pyc
 .DS_*
+*.tar

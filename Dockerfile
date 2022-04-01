@@ -21,4 +21,4 @@ ADD nginx.conf /SpeechScore/
 
 EXPOSE 3010 8002
 
-CMD ["sh", "/root/SpeechScore/start_server.sh"]
+CMD ["sh", "/SpeechScore/start_server.sh"]
